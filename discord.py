@@ -11,6 +11,10 @@ client = discord.Client()
 TOKEN = '<your bot-token>'
 usage = '<define a usage message>'
 
+def picfromfolder(folder): # returns a random file (image) from <folder>
+    filename = filelist[randrange(0, len(listdir(folder)))]
+    return f'{folder}/{filename}'
+
 @client.event
 async def on_message(message):
     if message.author.bot: # checks if the message comes from a bot, otherwise the bot may answer itself and get stuck in a loop
@@ -70,19 +74,13 @@ async def on_message(message):
         await message.channel.send(file=discord.File('cat.png'))
 
     elif re.match(r'^!yoda', text):
-        filelist = listdir('yoda') # a local folder with baby-yoda images, won't upload it here because of copyright
-        filename = filelist[randrange(0, len(filelist))]
-        await message.channel.send(file=discord.File('yoda/' + filename))
+        await message.channel.send(file=discord.File(picfromfolder('yoda')))
 
     elif re.match(r'^!pus', text):
-        filelist = listdir('platypus') # a local folder with platypus images, won't upload it here because of copyright
-        filename = filelist[randrange(0, len(filelist))]
-        await message.channel.send(file=discord.File('platypus/' + filename))
+        await message.channel.send(file=discord.File(picfromfolder('platypus')))
 
     elif re.match(r'^!ray', text):
-        filelist = listdir('ray') # a local folder with ray images, won't upload it here because of copyright
-        filename = filelist[randrange(0, len(filelist))]
-        await message.channel.send(file=discord.File('ray/' + filename))
+        await message.channel.send(file=discord.File(picfromfolder('ray/')))
 
     elif re.match(r'!dog', lowtext):
         dogtml = requests.get('https://random.dog').text
