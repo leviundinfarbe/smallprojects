@@ -21,8 +21,7 @@ bot = Bot(token=TGTOKEN)
 dp = Dispatcher(bot)
 
 def picfromfolder(folder): # returns a random file (image) from <folder>
-    filelist = listdir(folder)
-    filename = filelist[randrange(0, len(filelist))]
+    filename = filelist[randrange(0, len(listdir(folder)))]
     with open(f'{folder}/{filename}', 'rb') as f:
         return f
 
