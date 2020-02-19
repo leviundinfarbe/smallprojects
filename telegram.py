@@ -21,9 +21,10 @@ bot = Bot(token=TGTOKEN)
 dp = Dispatcher(bot)
 
 def picfromfolder(folder): # returns a random file (image) from <folder>
-    filename = filelist[randrange(0, len(listdir(folder)))]
-    with open(f'{folder}/{filename}', 'rb') as f:
-        return f
+    filelist = listdir(folder)
+    filename = filelist[randrange(0, len(filelist))]
+    f = open(f'{folder}/{filename}', 'rb')
+    return f
 
 @dp.message_handler(commands=['help'])
 async def incomming(message: types.Message):
@@ -48,14 +49,17 @@ async def incoming(message: types.Message):
 @dp.message_handler(commands=['yoda'])
 async def incoming(message: types.Message):
     await message.answer_photo(picfromfolder('yoda')) # a local folder with baby-yoda images, won't upload it here because of copyright
+    f.close()
 
 @dp.message_handler(commands=['pus'])
 async def incoming(message: types.Message):
     await message.answer_photo(picfromfolder('platypus')) # a local folder with platypus images, won't upload it here because of copyright
+    f.close()
 
 @dp.message_handler(commands=['ray'])
 async def incoming(message: types.Message):
     await message.answer_photo(picfromfolder('ray')) # a local folder with ray images, won't upload it here because of copyright
+    f.close()
 
 @dp.message_handler(commands=['random']) # usage: /random; returns a random quote
 async def incoming(message: types.Message):
