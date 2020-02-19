@@ -12,7 +12,8 @@ TOKEN = '<your bot-token>'
 usage = '<define a usage message>'
 
 def picfromfolder(folder): # returns a random file (image) from <folder>
-    filename = filelist[randrange(0, len(listdir(folder)))]
+    filelist = listdir(folder)
+    filename = filelist[randrange(0, len(filelist))]
     return f'{folder}/{filename}'
 
 @client.event
