@@ -1,0 +1,33 @@
+body {
+    background-color: #222;
+}
+div.main {
+    margin-left: 15vw;
+    margin-right: 15vw;
+    margin-bottom: 40px;
+}
+div.stop {
+    margin-left: 15vw;
+    margin-right: 15vw;
+    width: 100%;
+    background-color: #222;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+div.stop button {
+    width: calc(100% - 30vw);
+}
+button {
+    background-color: #222;
+    color: #d3d3d3;
+    border: 2px solid #4e191b;
+    height: 30px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+h1, h2, h3 {
+    color: #d3d3d3;
+}
+
